@@ -1,0 +1,1809 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List
+href="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/filelist.xml">
+<link rel=Edit-Time-Data
+href="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Implementing the State Pattern in Actor Framework.</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Allen C. Smith</o:Author>
+  <o:LastAuthor>Allen C. Smith</o:LastAuthor>
+  <o:Revision>4</o:Revision>
+  <o:TotalTime>30</o:TotalTime>
+  <o:Created>2012-09-24T18:54:00Z</o:Created>
+  <o:LastSaved>2012-09-27T20:28:00Z</o:LastSaved>
+  <o:Pages>3</o:Pages>
+  <o:Words>1720</o:Words>
+  <o:Characters>9804</o:Characters>
+  <o:Company>National Instruments</o:Company>
+  <o:Lines>81</o:Lines>
+  <o:Paragraphs>23</o:Paragraphs>
+  <o:CharactersWithSpaces>11501</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=dataStoreItem
+href="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/item0021.xml"
+target="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/props0022.xml">
+<link rel=themeData
+href="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackRevisions/>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520092929 1073786111 9 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Footnote Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Comment Text Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 3.25in right 6.5in;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-noshow:yes;
+	mso-style-priority:35;
+	mso-style-qformat:yes;
+	mso-style-next:Normal;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.MsoFootnoteReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	vertical-align:super;}
+span.MsoCommentReference
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	mso-themecolor:hyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"Comment Text";
+	mso-style-link:"Comment Subject Char";
+	mso-style-next:"Comment Text";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	mso-add-space:auto;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+span.FootnoteTextChar
+	{mso-style-name:"Footnote Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Footnote Text";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+span.CommentTextChar
+	{mso-style-name:"Comment Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Comment Text";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;}
+span.CommentSubjectChar
+	{mso-style-name:"Comment Subject Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-parent:"Comment Text Char";
+	mso-style-link:"Comment Subject";
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+ /* Page Definitions */
+ @page
+	{mso-footnote-separator:url("Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/header.htm") fs;
+	mso-footnote-continuation-separator:url("Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/header.htm") fcs;
+	mso-endnote-separator:url("Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/header.htm") es;
+	mso-endnote-continuation-separator:url("Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/header.htm") ecs;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-footer:url("Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/header.htm") f1;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:294532474;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1571011736 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:436340607;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-877913488 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:692078079;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-38122576 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1018199660;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1260113310 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:1320041825;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-38122576 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:1735737124;
+	mso-list-type:hybrid;
+	mso-list-template-ids:155348114 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6
+	{mso-list-id:1742481029;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1119852 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l6:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l6:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="8194"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt;line-height:115%'>Implementing the State Pattern in
+Actor Framework</span></b></p>
+
+<p class=MsoNormal>The <b style='mso-bidi-font-weight:normal'>state pattern</b>
+is a behavioral design pattern that “allow[s] an object to alter its behavior
+when <span class=GramE>its</span> internal state changes.<span
+style='mso-spacerun:yes'>  </span>The object will appear to change its class.”<a
+style='mso-footnote-id:ftn1' href="#_ftn1" name="_ftnref1" title=""><span
+class=MsoFootnoteReference><span style='mso-special-character:footnote'><![if !supportFootnotes]><span
+class=MsoFootnoteReference><span style='font-size:11.0pt;line-height:115%;
+font-family:"Calibri","sans-serif";mso-ascii-theme-font:minor-latin;mso-fareast-font-family:
+Calibri;mso-fareast-theme-font:minor-latin;mso-hansi-theme-font:minor-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:minor-bidi;
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></a><span
+style='mso-spacerun:yes'>  </span>Use this pattern if an object must change its
+behavior based on its internal state (i.e. if the class has two or more modes
+of operation such that the mode change alters the behavior of most of the class
+methods).<span style='mso-spacerun:yes'>  </span>This pattern lets you avoid
+adding case structures that test for mode to all of your VIs, generally making
+for more maintainable code. This package demonstrates a straightforward way to
+create a family of actors that together implement the state pattern. We will
+refer to this collection of actors as a State Pattern Actor.</p>
+
+<p class=MsoNormal><a href="https://decibel.ni.com/content/docs/DOC-23397">Actor
+Framework 4.1</a> introduces a new dynamic dispatch VI, <b style='mso-bidi-font-weight:
+normal'>Substitute Actor.vi</b>.<span style='mso-spacerun:yes'>  </span>This VI
+allows us to replace an already launched actor with another actor. You don’t
+have to launch the new actor, and you access it using the same enqueuer.<span
+style='mso-spacerun:yes'>  </span>Substitute Actor works by transferring the
+caller and self queues from the original actor to the new actor (the original
+actor is destroyed).<span style='mso-spacerun:yes'>  </span>You can use an
+override of Substitute Actor to pass on other shared data.<span
+style='mso-spacerun:yes'>  </span>There is an important limitation:<span
+style='mso-spacerun:yes'>  </span>the core of the originally launched actor
+continues to run, with the new actor as its internal data.<span
+style='mso-spacerun:yes'>  </span>In practical terms, we must observe the
+following:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l5 level1 lfo2'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>All of the state actors must share a common
+ancestor more specific than just <span class=SpellE>Actor.lvclass</span>.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l5 level1 lfo2'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Only that common ancestor class may override <b
+style='mso-bidi-font-weight:normal'>Actor Core.vi.</b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>The State Actor</b></p>
+
+<p class=MsoNormal>This package adds a new actor, <b style='mso-bidi-font-weight:
+normal'>State <span class=SpellE>Actor.lvclass</span></b>, to your
+user.lib/Actors folder.<span style='mso-spacerun:yes'>  </span>State Actor is
+an abstract class that provides a framework for defining the behavior of state
+transitions.<span style='mso-spacerun:yes'>  </span>State Actor includes the
+following methods.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Entry.vi</b>:<span
+style='mso-spacerun:yes'>  </span>This is an abstract method.<span
+style='mso-spacerun:yes'>  </span>Override this method to define the behavior
+when you enter the state.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Exit.vi:</b><span
+style='mso-spacerun:yes'>  </span>This is an abstract method.<span
+style='mso-spacerun:yes'>  </span>Override this method to define the behavior
+when you leave the state.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Change State.vi</b>:<span
+style='mso-spacerun:yes'>  </span>This method defines state transitions; use it
+to construct the specific state transitions of your State Pattern Actor.<span
+style='mso-spacerun:yes'>  </span>The method takes the current state and the
+next state as inputs.<span style='mso-spacerun:yes'>  </span>It invokes <b
+style='mso-bidi-font-weight:normal'>Exit.vi</b> on the current state.<span
+style='mso-spacerun:yes'>  </span>It then invokes <b style='mso-bidi-font-weight:
+normal'>Substitute Actor.vi</b> to transfer data from the current state to the
+next state.<span style='mso-spacerun:yes'>  </span>Finally, it invokes <b
+style='mso-bidi-font-weight:normal'>Entry.vi</b> on the new state, and returns
+that state as the current state.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Actor Core.vi:</b><span
+style='mso-spacerun:yes'>  </span>This override invokes <b style='mso-bidi-font-weight:
+normal'>Entry.vi</b> on the initial state, prior to calling the parent Actor
+Core.<span style='mso-spacerun:yes'>  </span>Adding this behavior to Actor Core
+(instead of <span class=GramE>an</span> override of <b style='mso-bidi-font-weight:
+normal'>Pre Launch Init.vi</b>) allows the initial state to launch a nested
+actor as part of its entry behavior.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Building State Patter
+Actors</b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-left:0in;mso-add-space:auto'>In
+an Actor Framework implementation of the state pattern, you create a context
+actor which inherits from State Actor.<span style='mso-spacerun:yes'> 
+</span>The context actor will be the common ancestor of all the actors that
+make up your State Pattern Actor, and it is the only actor that may override
+Actor Core.vi.<span style='mso-spacerun:yes'>  </span>You then create children
+of the context actor, one for each state in your system.<span
+style='mso-spacerun:yes'>  </span>The context actor may itself represent a
+valid state of the system, or may simply be an abstract class.<span
+style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'>You
+will create the following for your context actor:</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Any attributes to be shared by all the states of
+the system. </p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Substitute Actor.vi</b> that will transfer those attributes from the
+current state actor to the new state actor.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>The override of <b style='mso-bidi-font-weight:
+normal'>Actor Core.vi</b> (if any).</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>A dynamic dispatch method for every method whose
+behavior changes based on state.<span style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>A method for every state change the actor’s
+caller can invoke.<span style='mso-spacerun:yes'>  </span>(State transitions
+can also be invoked by other methods of the context actor.<span
+style='mso-spacerun:yes'>  </span>For example, any method might include the
+code to transition to the “System Faulted State” if an error occurs).</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l3 level1 lfo4'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>6.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Message classes to invoke those methods.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'>Each
+method that changes state will invoke <b style='mso-bidi-font-weight:normal'>Change
+State.vi</b>, a protected method of State Actor.<span
+style='mso-spacerun:yes'>  </span>Wire a class constant for the new state actor
+to the <b style='mso-bidi-font-weight:normal'>New State</b> input.<span
+style='mso-spacerun:yes'>  </span><span class=GramE>Wire <b style='mso-bidi-font-weight:
+normal'>State in</b> to your method’s context actor control, and <b
+style='mso-bidi-font-weight:normal'>State out</b> to the context actor indicator<b
+style='mso-bidi-font-weight:normal'>.</b></span><b style='mso-bidi-font-weight:
+normal'><o:p></o:p></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><b
+style='mso-bidi-font-weight:normal'><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-left:0in;mso-add-space:auto;
+page-break-after:avoid'><span style='mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_4" o:spid="_x0000_i1031" type="#_x0000_t75"
+ style='width:228.75pt;height:126pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image001.png"
+  o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=305 height=168
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image002.jpg"
+v:shapes="Picture_x0020_4"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>1</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'>  </span>A State
+Transition Method<span style='font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+
+<p class=MsoNormal>Each state in your system is a child of the context
+actor.<span style='mso-spacerun:yes'>  </span>For each of these state actors,
+you will provide the following:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l1 level1 lfo6'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Overrides of <b style='mso-bidi-font-weight:
+normal'>Entry.vi</b> and <b style='mso-bidi-font-weight:normal'>Exit.vi</b>
+that provide the transition behavior for this state.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l1 level1 lfo6'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Overrides of methods whose behavior will change
+when in the state.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l1 level1 lfo6'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Any additional methods for behaviors unique to
+the state.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l1 level1 lfo6'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>Messages to invoke the unique public behaviors
+of the state, if the state adds any public methods beyond those inherited from
+the parent.</p>
+
+<p class=MsoNormal>You may also choose to include override methods of the
+context actor’s state transition methods.<span style='mso-spacerun:yes'> 
+</span>You can do this to add behavior to specific state transitions, i.e. do X
+when we transition from State A to State B.<span style='mso-spacerun:yes'> 
+</span>You can also do it to disable the default transition behavior, which may
+be desirable when exiting and reentering a state (i.e. when we transition from State
+A to State A).</p>
+
+<p class=MsoFooter>If you need to add behavior to a specific state transition,
+and that behavior must occur after exiting State <span class=GramE>A</span> but
+before entering State B, you may add the behavior to an override of <b
+style='mso-bidi-font-weight:normal'>Substitute Actor.vi</b>.<span
+style='mso-spacerun:yes'>  </span>Note that the override is specific to the
+state you are exiting; you will need to create a mechanism to invoke code
+specific to the new state.</p>
+
+<p class=MsoFooter><o:p>&nbsp;</o:p></p>
+
+<p class=MsoFooter>If you create a message to invoke the unique method of a
+specific state, you will generate an error if you send the message to the State
+Pattern Actor when it is in a different state.<span style='mso-spacerun:yes'> 
+</span>If you do not wish to generate this error, then you must guarantee that
+all states in the system will gracefully handle the message.<span
+style='mso-spacerun:yes'>  </span>The easiest way to gracefully handle such a
+message is to silently discard it if the message doesn’t apply to the current
+state.<span style='mso-spacerun:yes'>  </span>You can do this by modifying the
+message’s Do method as shown in Figure 2. If you want more complex behavior,
+strongly consider moving the method up to the parent class so that each state
+may override as needed.</p>
+
+<p class=MsoFooter><o:p>&nbsp;</o:p></p>
+
+<p class=MsoFooter style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_13" o:spid="_x0000_i1030"
+ type="#_x0000_t75" style='width:383.25pt;height:164.25pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image003.png"
+  o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=511 height=219
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image004.jpg"
+v:shapes="Picture_x0020_13"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>2</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'> 
+</span>Discarding a Message</p>
+
+<p class=MsoNormal>You launch the system by passing an initial state to <b
+style='mso-bidi-font-weight:normal'>Launch Actor.vi</b>, as shown. </p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_19" o:spid="_x0000_i1029"
+ type="#_x0000_t75" style='width:60pt;height:84.75pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image005.png"
+  o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=80 height=113
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image006.jpg"
+v:shapes="Picture_x0020_19"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>3</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'> 
+</span>Launching a State Pattern Actor</p>
+
+<p class=MsoNormal>The system’s caller may trigger a state transition by
+sending one of the public state transition messages.<span
+style='mso-spacerun:yes'>  </span>A state may trigger a transition from one of
+its own methods by invoking a transition method directly.</p>
+
+<p class=MsoFooter><b style='mso-bidi-font-weight:normal'>Running the Example</b></p>
+
+<p class=MsoFooter><o:p>&nbsp;</o:p></p>
+
+<p class=MsoFooter>The package adds the State Pattern Actor project to the list
+of sample projects. <span style='mso-spacerun:yes'>  </span>Select the project
+and create a local copy.</p>
+
+<p class=MsoFooter><o:p>&nbsp;</o:p></p>
+
+<p class=MsoFooter>Open and run <b style='mso-bidi-font-weight:normal'>Load App.vi</b>.<span
+style='mso-spacerun:yes'>  </span>The State Pattern UI will open.<span
+style='mso-spacerun:yes'>  </span>Note that the event log shows we have entered
+the Idle state.</p>
+
+<p class=MsoFooter><o:p>&nbsp;</o:p></p>
+
+<p class=MsoFooter style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_20" o:spid="_x0000_i1028"
+ type="#_x0000_t75" style='width:468pt;height:265.5pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image007.png"
+  o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=354
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image008.jpg"
+v:shapes="Picture_x0020_20"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>4</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'>  </span>The
+State Pattern UI</p>
+
+<p class=MsoNormal>Click on <b style='mso-bidi-font-weight:normal'>Get One
+Value</b> and observe the results.<span style='mso-spacerun:yes'>  </span><span
+class=GramE>Click on <b style='mso-bidi-font-weight:normal'>Send Running
+Transition.</b></span><span style='mso-spacerun:yes'>  </span>The system
+acquires several data points and performs a calculation.<span
+style='mso-spacerun:yes'>  </span>Note that the system exits the Running state
+and enters the <span class=GramE>Idle</span> state automatically.<span
+style='mso-spacerun:yes'>  </span>At this point, your front panel should
+resemble this:</p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Picture_x0020_23" o:spid="_x0000_i1027"
+ type="#_x0000_t75" style='width:468pt;height:265.5pt;visibility:visible;
+ mso-wrap-style:square'>
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image009.png"
+  o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=624 height=354
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image010.jpg"
+v:shapes="Picture_x0020_23"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>5</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]--></p>
+
+<p class=MsoNormal>Click on <b style='mso-bidi-font-weight:normal'>Send Idle
+Transition</b>, and note that nothing happens.<span style='mso-spacerun:yes'> 
+</span>The system is already in Idle, and no transition is necessary.<span
+style='mso-spacerun:yes'>  </span>Now click on <b style='mso-bidi-font-weight:
+normal'>Send Running Transition</b>, wait until the first value appears, and
+click on <b style='mso-bidi-font-weight:normal'>Send Idle Transition.</b><span
+style='mso-spacerun:yes'>  </span>Note that the system quits the acquisition
+early, returning a partial data set, and transitions to Idle.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>The Example,
+Explained</b></p>
+
+<p class=MsoNormal>The example was built using the Actor Framework
+Template.<span style='mso-spacerun:yes'>  </span>It consists of a launcher, a
+user interface, an actor that simulates a data acquisition process, and a
+family of actors that comprise a State Pattern Actor.</p>
+
+<p class=MsoNormal>Open and run<b style='mso-bidi-font-weight:normal'> Load
+App.vi</b> to launch the example.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>State Pattern <span
+class=SpellE>UI.lvlib</span></b> contains the user interface actor for the
+example, <b style='mso-bidi-font-weight:normal'>State Pattern <span
+class=SpellE>UI.lvclass</span></b>.<span style='mso-spacerun:yes'>  </span>This
+actor launches a State Pattern Actor, Process States, as a nested actor.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Process <span
+class=SpellE>Actor.lvlib</span></b> contains an actor that simulates a data
+acquisition process.<span style='mso-spacerun:yes'>  </span>You can send this
+actor an Update message, which will cause the actor to generate a random number
+and send it to its caller.<span style='mso-spacerun:yes'>  </span>If you send
+this actor a Start Acquisition message, it will generate and send a random
+number every second, until you send it a Stop Acquisition message.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Process <span
+class=SpellE>States.lvlib</span></b> contains the actors and messages that
+comprise a State Pattern Actor. <span style='mso-spacerun:yes'> </span>The
+actor launches a single Process Actor as a nested actor.<span
+style='mso-spacerun:yes'>  </span><b style='mso-bidi-font-weight:normal'>Process
+<span class=SpellE>State.lvclass</span></b> is the context actor.<span
+style='mso-spacerun:yes'>  </span><span class=SpellE><b style='mso-bidi-font-weight:
+normal'>Idle.lvclass</b></span> and <span class=SpellE><b style='mso-bidi-font-weight:
+normal'>Running.lvclass</b></span><b style='mso-bidi-font-weight:normal'> </b>are
+the two supported states.<span style='mso-spacerun:yes'>  </span></p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Object_x0020_2" o:spid="_x0000_i1026"
+ type="#_x0000_t75" style='width:205.5pt;height:133.5pt;visibility:visible'
+ o:gfxdata="UEsDBBQABgAIAAAAIQCTXr2S+wAAAOEBAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbJSRQU7DMBBF
+90jcwfIWxQ5dIISSdEHKEhAqBxjZk8RqMrY8JrS3x2nLggVFLC3r/f++plrvp1HMGNl5quWtKqVA
+Mt466mv5vn0q7qXgBGRh9IS1PCDLdXN9VW0PAVlkmriWQ0rhQWs2A07Aygek/NP5OEHKz9jrAGYH
+PepVWd5p4ykhpSItGbKpXrJAdBbFK8T0DFPu0TayxpVvvVE5SorHE7PU1hJCGJ2BlKX1TFZNXPiu
+cwZVG3lzpG4WSjdVix18jEls9rnytDLiyH8E/lxQnO1VJo+lPLjAFxouG5/Nfltt/SdFnP87u83Y
+G87fVvp4oOYLAAD//wMAUEsDBBQABgAIAAAAIQA4/SH/1gAAAJQBAAALAAAAX3JlbHMvLnJlbHOk
+kMFqwzAMhu+DvYPRfXGawxijTi+j0GvpHsDYimMaW0Yy2fr2M4PBMnrbUb/Q94l/f/hMi1qRJVI2
+sOt6UJgd+ZiDgffL8ekFlFSbvV0oo4EbChzGx4f9GRdb25HMsYhqlCwG5lrLq9biZkxWOiqY22Yi
+Tra2kYMu1l1tQD30/bPm3wwYN0x18gb45AdQl1tp5j/sFB2T0FQ7R0nTNEV3j6o9feQzro1iOWA1
+4Fm+Q8a1a8+Bvu/d/dMb2JY5uiPbhG/ktn4cqGU/er3pcvwCAAD//wMAUEsDBBQABgAIAAAAIQAg
+lozJBwcAAPtfAAAOAAAAZHJzL2Uyb0RvYy54bWzsnG1v2zYQx98P2HcQ9HZobcmyLBt1ijVdiwFB
+G8TtB2AkKjZKUwLFOM4+/e5I6iFuErZZsqbovbJsUqfjn5R8Px3JV6/3WxHsuGo2lVyG0ctxGHCZ
+V8VGXizDz5/evcjCoNFMFkxUki/Da96Er49+/+3VVb3gcbWuRMFVAEZks7iql+Fa63oxGjX5mm9Z
+87KquYTCslJbpuGruhgVil2B9a0YxeNxOrqqVFGrKudNA7++tYXhkbFfljzXH8uy4ToQyzAdz9Mw
+0MsQnFTgbJRMwuAcv46OXrHFhWL1epM7Z9gDfNmyjYRLd6beMs2CS7V5gClR5V94cczkjjVgUuSL
+4S/OR5H/d8tsIXfvVb2qTxV6nn/YnapgUxiRJNtCl1l1oMBVA7FGB2dd9Ab2pdqioaosg72xct0p
+zPc6yOHHJJul2Rh6IYeySZTO57Hrg3wN3YXnRfF8mmAVqIH9Boemk/L1Xx4j4Jv1AQ4GfjU1eiV3
+Xzc0isPAtvTjjokgiroGY922te15jRPqoJ3xNErQSfQ3mo+n49bhts3RNIb2uDbj0HM1OnfZolaN
+fs+rbYAHy5ALsakbbgYU25002rrS1jK90Hqj9yvTPr1/UxXX2NJz+ISeVFocVzD24cJM5usKxn2u
+lW2haPRKXwuO1QtentoRAEdncKJgeAdz+eLzCmuDm30VsRMRyBBsmTqxpsUF3P0iDKDOJ3a++mcZ
+zqPE9B84YKpwdiLfqC+gTgi29Ua6r+DYGi4F9+7ppcyh2ZFpsPOiAUuRGSpfuMIHDNzzprypxKZ4
+txECnTdPC34sVAAdCH5o04Xg8o1a5qqBvq55yXIY139s5QuhrRScHRRwZgvy5qAgb3o5QCejjNMD
+XYHDuJcmmc7Q4YD98vqgKE6fSa9PO0hIHxTF6ZP0+kSTWWSeKiQQquIEmg4EyuLMPB5IIFTFCZT2
+AsVxBgOIHkHwXEZVnECzgUCzZELPaPPHhao4gbJeIFTH/JPTLYaqOIHmA4HS6Ywe0mYEoSo2IhqE
+liYwRbnsAOrCTyOlOgg1g2KjtCGGoNnqY8EZRH0u9tdHfxeCYyiqzUWMAS6LU6bYYcja23FRszmj
+D48vG76qzwAPbXEbPzdtPCzkGS+BgwBF4hD7/CDGZHnOJcSZpmjNCm5DT4z7jbcYfCLDYlRqFUGD
+WLuEoLWz7Qy0Na2R1rZ1zdXHU7kB2u5kFwnfd3J3hrlyJXV38nYjK3Vby/roubT1jftOGGyW6c97
+cAqgeohTsQukPxj0sm3qMawFmAOcStIkM09lwinCqY40Cafso8QyJt7SENYQThlR7AuDVh/CqfYN
+xx3vKwinPAIRTnkEIpzyCEQ45RGIcMoj0FPj1NmllPDinYiqRb1nSlTTlqiOL9WOF8Hb6koGfypV
+XQVR8hC86t7pIF71uSggTJdci5NJZl76YIZuNoHkVUu1Lai1aSiXrMqNZ+iY8cuAJSWtKGn1Uyf1
+KGnl0qR3QARRlucPnCjLIxBRlkcgoiyPQERZHoGIsjwCfRdl3ZFuwnexNyYbdckfm9LR+1umJEEy
+pTdn3lxCagWzW90kLspSPVmWCual2izVLUw1+2amClSFU9bGMAcFE384DNzExyFiTcYJVrBWCbFo
+XiAlstpEDSEWIdaNGbnfO/GWEMsT3hBieQQixPIIRIjlEYgQyyMQIdavOBFw3iKWXVeVfTNVDTDq
+rnVgLUW1kTTmqdyxnWJ4R57Ku6jqfo4/v7id49tpjO080h7haR0WzhkdrtaidVg/cJ0a8RbxFvEW
+rj89WNf5aCtBibc8wSDxlkcg4i2PQMRbHoEeg7dsGE0ZKVix9b+sm4phY4TBuqluR4zvWjfVLRgH
+HEqzKS6Nhn7s5/XZTJTbeMNkpbAcIvSnwaW70p6ESyZhfHPlXr/wjnDpuWzrQbhEuES4RLj0A9/Y
+EC55gl3CJY9AhEsegQiXum0pDCz8DNtMxN2ufV9P4AOUMtQDexauYOMRSzi37zlhJ/DFaZYl2XQ4
+fy9KE9iCEPaLxAVQU9ze7yZJ4a44aQp7XdAKKdrW75fd9pD4iPiI+Ij4iPjo+W5NS3zkCf+JjzwC
+PQYfmRfew2lA962Q+hcAAP//fJDBDsIgDIZfZdkLOE28EN1Bjedle4IGOkfsYAGc8+1lgFMTIwfS
+0v//WirFWRKVuxUwVKICA3VlQjqE200HLR7lDtjNYjPUyN0qFRqvAGbdg3AOSNXYZlJM+3yThwrv
+sMcjmWwE2ufAOSq3jqUOBMbnbeFPHpn25QgdAnAGtX7ChZ0AL+U3O2KSfrZi2/qJF3Pxb7BoXhyh
+s1Zvcy+VNr8A5H+VOkd9GD8txi/WzqskzkjzK4ojqBFskFwMDJ3kJ3Dwmfv4PjDc6E6TQFM+AQAA
+//8DAFBLAwQUAAYACAAAACEAReSCCdwAAAAFAQAADwAAAGRycy9kb3ducmV2LnhtbEyPQUvDQBCF
+74L/YRnBS7GbVKkhzaZIQRBPGovQ2yQ7TYLZ3bC7TeO/d/RiLw8eb3jvm2I7m0FM5EPvrIJ0mYAg
+2zjd21bB/uP5LgMRIlqNg7Ok4JsCbMvrqwJz7c72naYqtoJLbMhRQRfjmEsZmo4MhqUbyXJ2dN5g
+ZOtbqT2eudwMcpUka2mwt7zQ4Ui7jpqv6mQUZK+7l+yI4dBO1X3t92+LTzkslLq9mZ82ICLN8f8Y
+fvEZHUpmqt3J6iAGBfxI/FPOHtKUba1gtX5MQJaFvKQvfwAAAP//AwBQSwECLQAUAAYACAAAACEA
+k169kvsAAADhAQAAEwAAAAAAAAAAAAAAAAAAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQItABQA
+BgAIAAAAIQA4/SH/1gAAAJQBAAALAAAAAAAAAAAAAAAAACwBAABfcmVscy8ucmVsc1BLAQItABQA
+BgAIAAAAIQAglozJBwcAAPtfAAAOAAAAAAAAAAAAAAAAACsCAABkcnMvZTJvRG9jLnhtbFBLAQIt
+ABQABgAIAAAAIQBF5IIJ3AAAAAUBAAAPAAAAAAAAAAAAAAAAAF4JAABkcnMvZG93bnJldi54bWxQ
+SwUGAAAAAAQABADzAAAAZwoAAAAA
+">
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image011.png"
+  o:title="" cropbottom="-271f"/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=274 height=178
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image012.gif"
+v:shapes="Object_x0020_2"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>6</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'> 
+</span>Supported States</p>
+
+<p class=MsoNormal>Process States accepts these messages:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l6 level1 lfo8'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Go to
+Idle</b>:<span style='mso-spacerun:yes'>  </span>If the current state is <span
+class=GramE>Running</span>, the actor will immediately transition to Idle.<span
+style='mso-spacerun:yes'>  </span>The message has no effect if the current
+state is Idle.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l6 level1 lfo8'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Go to
+Running</b>:<span style='mso-spacerun:yes'>  </span>If the current state is
+Idle, the actor will immediately transition to Running.<span
+style='mso-spacerun:yes'>  </span>The message has no effect if the current
+state is <span class=GramE>Running</span>.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l6 level1 lfo8'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Request
+Update from Process</b>:<span style='mso-spacerun:yes'>  </span>If the current
+state is Idle, the actor will request a single data point from its Process Actor.<span
+style='mso-spacerun:yes'>  </span>The message has no effect if the current
+state is <span class=GramE>Running</span>.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l6 level1 lfo8'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><b style='mso-bidi-font-weight:normal'>Update
+from Process</b>:<span style='mso-spacerun:yes'>  </span>Process Actor sends
+data to Process State using this message.</p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'>Process <span
+class=SpellE>State.lvclass</span></b> is the context actor.<span
+style='mso-spacerun:yes'>  </span>It inherits from State Actor and includes:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l0 level1 lfo10'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Actor Core.vi</b> that launches its Process Actor.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo10'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of<b style='mso-bidi-font-weight:
+normal'> Substitute Actor.vi</b> that transfers Process Actor’s enqueuer from
+the current state to the new state.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo10'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='mso-spacerun:yes'> </span>Two state
+transition methods, <b style='mso-bidi-font-weight:normal'>Go to Idle.vi</b>
+and <b style='mso-bidi-font-weight:normal'>Go to Running.vi.</b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l0 level1 lfo10'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An abstract method, <b style='mso-bidi-font-weight:
+normal'>Update from <span class=GramE>Process.vi<span style='font-weight:normal'>,
+that</span></span></b> receives data from Process Actor.</p>
+
+<p class=MsoListParagraphCxSpMiddle><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><span
+class=SpellE><b style='mso-bidi-font-weight:normal'>Idle.lvclass</b></span> is
+the actor for the <span class=GramE>Idle</span> state.<span
+style='mso-spacerun:yes'>  </span>It inherits from Process State and includes:</p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-left:0in;mso-add-space:auto'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l4 level1 lfo12'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Entry.vi</b> that sends the “Entering Idle State” message to the UI.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l4 level1 lfo12'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Exit.vi</b> that sends the “Exiting Idle State” message to the UI.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l4 level1 lfo12'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Go to Idle.vi</b> that <i style='mso-bidi-font-style:normal'>disables</i>
+the call to <b style='mso-bidi-font-weight:normal'>Entry.vi</b>.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l4 level1 lfo12'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Update from Process.vi</b> that sends a single data point to the UI for
+display.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l4 level1 lfo12'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>A unique method, <b style='mso-bidi-font-weight:
+normal'>Request Update from Process.vi</b>, which sends an Update message to
+the Process Actor.</p>
+
+<p class=MsoNormal>When you click on the <b style='mso-bidi-font-weight:normal'>Get
+One Value</b> button on the UI, it sends a Request Update from Process message
+to Process State.<span style='mso-spacerun:yes'>  </span>Note, however, that
+only Idle can respond to that message.<span style='mso-spacerun:yes'> 
+</span>This message was modified as described above to be dropped if received
+by Process State or Running.</p>
+
+<p class=MsoNormal><span class=SpellE><b style='mso-bidi-font-weight:normal'>Running.lvclass</b></span>
+is the actor for the Running state.<span style='mso-spacerun:yes'>  </span>It
+also inherits from Process State and includes:</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-.25in;mso-list:l2 level1 lfo14'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>1.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Entry.vi</b> that sends a Start Acquisition message to Process Actor
+and the “Entering Running State” message to the UI.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l2 level1 lfo14'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>2.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Exit.vi</b> that sends a Stop Acquisition message to the Process Actor
+and the “Exiting Running State” message and the average value and cont data to
+the UI.</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in;mso-list:l2 level1 lfo14'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>3.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Go to Running.vi</b> that <i style='mso-bidi-font-style:normal'>disables</i>
+the call to <b style='mso-bidi-font-weight:normal'>Entry.vi</b>.</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-.25in;mso-list:l2 level1 lfo14'><![if !supportLists]><span
+style='mso-bidi-font-family:Calibri;mso-bidi-theme-font:minor-latin'><span
+style='mso-list:Ignore'>4.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>An override of <b style='mso-bidi-font-weight:
+normal'>Update from Process.vi</b> that sends a single data point to the UI for
+display.<span style='mso-spacerun:yes'>  </span>This override also increments
+the value count by one and calculates a running average value.</p>
+
+<p class=MsoNormal>Idle and <span class=GramE>Running</span> interact with
+Process Actor and State Pattern UI differently.<span style='mso-spacerun:yes'> 
+</span>They send different messages and behave differently when they receive
+messages.<span style='mso-spacerun:yes'>  </span>Idle responds to more messages
+than Running. </p>
+
+<p class=MsoNormal>This is the complete system.</p>
+
+<p class=MsoNormal style='page-break-after:avoid'><span style='mso-no-proof:
+yes'><!--[if gte vml 1]><v:shape id="Object_x0020_3" o:spid="_x0000_i1025"
+ type="#_x0000_t75" style='width:420.75pt;height:294pt;visibility:visible'
+ o:gfxdata="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
+">
+ <v:imagedata src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image013.png"
+  o:title="" croptop="-1206f" cropbottom="-159f" cropright="-8f"/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=561 height=392
+src="Implementing%20the%20State%20Pattern%20in%20Actor%20Framework_files/image014.gif"
+v:shapes="Object_x0020_3"><![endif]></span></p>
+
+<p class=MsoCaption>Figure <!--[if supportFields]><span style='mso-element:
+field-begin'></span><span style='mso-spacerun:yes'> </span>SEQ Figure \* ARABIC
+<span style='mso-element:field-separator'></span><![endif]--><span
+style='mso-no-proof:yes'>7</span><!--[if supportFields]><span style='mso-element:
+field-end'></span><![endif]-->:<span style='mso-spacerun:yes'>  </span>The
+State Pattern Example<span style='font-weight:normal;mso-bidi-font-weight:bold'><o:p></o:p></span></p>
+
+</div>
+
+<div style='mso-element:footnote-list'><![if !supportFootnotes]><br clear=all>
+
+<hr align=left size=1 width="33%">
+
+<![endif]>
+
+<div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFooter><a style='mso-footnote-id:ftn1' href="#_ftnref1" name="_ftn1"
+title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]><span class=MsoFootnoteReference><span
+style='font-size:11.0pt;line-height:115%;font-family:"Calibri","sans-serif";
+mso-ascii-theme-font:minor-latin;mso-fareast-font-family:Calibri;mso-fareast-theme-font:
+minor-latin;mso-hansi-theme-font:minor-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:minor-bidi;mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA'>[1]</span></span><![endif]></span></span></a>
+Gamma, Helm, Johnson, and <span class=SpellE>Vlissides</span>,<u> Design
+Patterns:<span style='mso-spacerun:yes'>  </span>Elements of Reusable
+Object-Oriented Software</u>, 1994, p. 305</p>
+
+<p class=MsoFootnoteText><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
