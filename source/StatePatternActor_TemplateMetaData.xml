@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Windows-1252" standalone="yes"?>
+<MetaData>
+  <ProjectTemplate>
+    <Title localize="yes">State Pattern Actor</Title>
+    <Description localize="yes">Demonstrates the use of State Actor.lvclass to implement the state pattern in Actor Framework</Description>
+    <Filters localize="yes">Sample Projects:Actor Framework</Filters>
+    <Keywords localize="yes">actor framework;framework;architecture;state pattern;design pattern</Keywords>
+    <LocationPath>Actor Framework/State Pattern Actor</LocationPath>
+    <ProjectPath>State Pattern.lvproj</ProjectPath>
+    <ListboxImagePath>images/state transition.png</ListboxImagePath>
+    <DocumentationPath>documentation/Implementing the State Pattern in Actor Framework.htm</DocumentationPath>
+    <CustomVIMode>None</CustomVIMode>
+    <SortPriority>300</SortPriority>
+    <LabelLocalizations></LabelLocalizations>
+  </ProjectTemplate>
+</MetaData>
