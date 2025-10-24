@@ -1,15 +1,28 @@
-# GitHub Repo Template
+# Overview
 
-GitHub Repo Template is a template for creation of open source projects made
-available on GitHub. It includes a permissive open source license, a developer
-certificate of origin, and a pull request template. This provides everything
-necessary to have a properly licensed open source project.
+State Pattern Actor is an add-on for [Actor Framework](https://github.com/ni/actor-framework) that enables behavioral state for actors that inherit from this package's actor class.
 
-## Using GitHub Repo Template
+- **Primary LabVIEW target:** 2020 SP1 or later (32- & 64-bit)
+- **Package format:** VIPM (`.vip`)
+- **License variance:**  The initial commit and package are licensed under NI's old Sample Code license (2014).  This should be updated to the MIT license with the next revision.
 
-1. Clone or download this repository.
-2. Copy its contents into your project (including the hidden .github directory). 
-3. Customize each file to suit your project's needs (including the README). Look through the files for "TODO" and \<reponame\>, and replace with content appropriate to your project.
-4. (Optional) Check out [GitHub Template Guidelines](https://github.com/cezaraugusto/github-template-guidelines) for ideas about how to customize your project.
+---
 
-TODO: describe a project in detail, what it does, how to use it, etc.
+## Getting Started
+
+1. **Install the latest package** from the *Builds* folder or drag-and-drop the `.vip` onto VIPM.
+2. For IDE palette integration, restart LabVIEW after installation.
+
+---
+
+## Contributing
+
+We welcome both code and non-code contributions – everything from bug fixes and performance tweaks to documentation, testing, and discussion.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. By contributing, you agree to license your work under these terms so NI and the LabVIEW community can incorporate it into future LabVIEW distributions.
+
+---
